@@ -1,0 +1,59 @@
+_base_:
+  - cfgs/models/ae-d4vq.yaml
+  - cfgs/trainers/ae.yaml
+
+datasets:
+  train:
+    name: wrapper_cae
+    args:
+      dataset:
+        name: image_folder
+        args:
+          root_path: /path/to/your/data
+          resize: 1024
+      resize_inp: 256
+      resize_gt_lb: 256
+      resize_gt_ub: 1024
+      final_crop_gt: 256
+    loader:
+      batch_size: 8
+      num_workers: 16
+
+  train_hrft:
+    name: wrapper_cae
+    args:
+      dataset:
+        name: image_folder
+        args:
+          root_path: /path/to/your/data
+          resize: 1024
+      resize_inp: 256
+      resize_gt_lb: 256
+      resize_gt_ub: 1024
+      p_max: 0.5
+      final_crop_gt: 256
+    loader:
+      batch_size: 8
+      num_workers: 16
+
+  val:
+    name: wrapper_cae
+    args:
+      dataset:
+        name: image_folder
+        args:
+          root_path: /path/to/your/data
+          resize: 1024
+      resize_inp: 256
+      resize_gt_lb: 256
+      resize_gt_ub: 1024
+      final_crop_gt: 256
+    loader:
+      batch_size: 8
+      num_workers: 16
+
+# if no validation set, remove val and set eval_iter: null
+# eval_iter: null 
+
+visualize:
+  ae_center_zoom_res: 1024

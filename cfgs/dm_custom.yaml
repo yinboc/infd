@@ -1,0 +1,36 @@
+_base_:
+  - cfgs/models/ae-d4vq.yaml
+  - cfgs/models/dm.yaml
+  - cfgs/trainers/dm.yaml
+
+model:
+  load_ckpt: save/ae_custom/last-model.pth
+
+datasets:
+  train:
+    name: wrapper_cae
+    args:
+      dataset:
+        name: image_folder
+        args:
+          root_path: /path/to/your/data # can be images preprocessed by resize_images.py
+          resize: 256
+      resize_inp: 256
+      ret_gt: false
+    loader:
+      batch_size: 48
+      num_workers: 16
+
+  val:
+    name: wrapper_cae
+    args:
+      dataset:
+        name: image_folder
+        args:
+          root_path: /path/to/your/data
+          resize: 256
+      resize_inp: 256
+      ret_gt: false
+    loader:
+      batch_size: 48
+      num_workers: 16

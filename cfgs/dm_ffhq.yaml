@@ -1,0 +1,32 @@
+_base_:
+  - cfgs/models/ae-d4vq.yaml
+  - cfgs/models/dm.yaml
+  - cfgs/trainers/dm.yaml
+
+model:
+  load_ckpt: save/ae_ffhq/last-model.pth
+
+datasets:
+  train:
+    name: wrapper_cae
+    args:
+      dataset:
+        name: ffhq
+        args: {img_folder: ffhq_lanczos256, split: train}
+      resize_inp: 256
+      ret_gt: false
+    loader:
+      batch_size: 48
+      num_workers: 16
+
+  val:
+    name: wrapper_cae
+    args:
+      dataset:
+        name: ffhq
+        args: {img_folder: ffhq_lanczos256, split: val}
+      resize_inp: 256
+      ret_gt: false
+    loader:
+      batch_size: 48
+      num_workers: 16

@@ -1,0 +1,20 @@
+model:
+  name: infd
+  args:
+    encoder:
+      name: encoder_vqf4
+    z_shape: [3, 64, 64]
+    quantizer: true
+    n_embed: 8192
+    decoder:
+      name: decoder_vqf4
+    renderer:
+      name: renderer_fixres_wrapper
+      args:
+        z_dec_channels: 128
+        net:
+          name: fixres_original_tail
+          args: {}
+    loss_cfg:
+      gan_g_loss: 0.75
+    adaptive_gan_weight: true

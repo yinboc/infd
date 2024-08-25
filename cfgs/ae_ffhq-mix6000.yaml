@@ -1,0 +1,43 @@
+_base_:
+  - cfgs/models/ae-d4vq.yaml
+  - cfgs/trainers/ae.yaml
+
+datasets:
+  train:
+    name: wrapper_cae
+    args:
+      dataset:
+        name: random_lr_hr
+        args:
+          lr_dataset:
+            name: ffhq
+            args: {img_folder: ffhq_1024, variant: all_lr}
+          hr_dataset:
+            name: ffhq
+            args: {img_folder: ffhq_1024, variant: mix6000}
+      resize_inp: 256
+      resize_gt_lb: 256
+      resize_gt_ub: 1024
+      final_crop_gt: 256
+    loader:
+      batch_size: 8
+      num_workers: 16
+
+  train_hrft:
+    name: wrapper_cae
+    args:
+      dataset:
+        name: ffhq
+        args: {img_folder: ffhq_1024, variant: mix6000}
+      resize_inp: 256
+      resize_gt_lb: 256
+      resize_gt_ub: 1024
+      p_max: 0.9
+      final_crop_gt: 256
+    loader:
+      batch_size: 8
+      num_workers: 16
+
+eval_iter: null
+visualize:
+  ae_center_zoom_res: 1024

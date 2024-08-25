@@ -1,0 +1,24 @@
+_base_:
+  - cfgs/models/ae-d4vq.yaml
+  - cfgs/models/dm.yaml
+  - cfgs/trainers/dm.yaml
+
+model:
+  load_ckpt: save/ae_ffhq-mix6000/last-model.pth
+
+datasets:
+  train:
+    name: wrapper_cae
+    args:
+      dataset:
+        name: ffhq
+        args: {img_folder: ffhq_lanczos256}
+      resize_inp: 256
+      ret_gt: false
+    loader:
+      batch_size: 48
+      num_workers: 16
+
+eval_iter: null
+visualize:
+  z_dm_samples_zoom: [4, 4]

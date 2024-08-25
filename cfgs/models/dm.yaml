@@ -1,0 +1,7 @@
+model:
+  args:
+    z_dm:
+      name: openai_unet
+    z_dp:
+      linear_beta_start: 0.0015
+      linear_beta_end: 0.0195
