@@ -46,9 +46,16 @@ Then run:
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 torchrun --standalone --nproc-per-node=8 run.py --cfg cfgs/dm_ffhq.yaml
 ```
 
-### Custom Datasets
+### Custom datasets
 
 To train on custom datasets, use `ae_custom.yaml`, `dm_custom.yaml` as cfg and replace root_path in configs with path to the image folder.
+
+### Pretrained models
+
+Model|Download|pFID 256/1K|pFID 512/1K|pFID 1K/1K
+:-:|:-:|:-:|:-:|:-:
+FFHQ|[Google Drive](https://drive.google.com/file/d/1qhLZ8FOFDdrxgJCJvCDyy2IVIquiI9vx/view?usp=sharing)|7.91|6.73|5.71
+FFHQ 6K-Mix|[Google Drive](https://drive.google.com/file/d/1HbWgltZ7kcuo_S9fjPCOALDv8DBkuM6F/view?usp=sharing)|10.99|7.52|6.80
 
 ## Evaluation
 
