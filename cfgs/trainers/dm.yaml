@@ -1,6 +1,6 @@
 trainer: infd_trainer
 
-max_iter: 1200000
+max_iter: 600000
 epoch_iter: 10000
 eval_iter: 50000
 save_iter: 200000

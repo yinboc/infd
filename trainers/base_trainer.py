@@ -39,8 +39,8 @@ class BaseTrainer():
         self.cfg_dict = OmegaConf.to_container(cfg, resolve=True)
         env = cfg._env
 
-        torch.backends.cuda.matmul.allow_tf32 = True
-        torch.backends.cudnn.allow_tf32 = True
+        # torch.backends.cuda.matmul.allow_tf32 = True
+        # torch.backends.cudnn.allow_tf32 = True
 
         force_replace = False
         if cfg._env.resume_mode == 'resume':

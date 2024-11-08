@@ -2,6 +2,9 @@ _base_:
   - cfgs/models/ae-d4vq.yaml
   - cfgs/trainers/ae.yaml
 
+max_iter: 1000000
+hrft_start_after_iters: 1000000
+
 datasets:
   train:
     name: wrapper_cae

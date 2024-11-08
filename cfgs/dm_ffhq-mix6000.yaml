@@ -20,5 +20,3 @@ datasets:
       num_workers: 16
 
 eval_iter: null
-visualize:
-  z_dm_samples_zoom: [4, 4]
